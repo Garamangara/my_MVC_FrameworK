@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<header>
-			хедер сайта
+			<?= $header ?>
 		</header>
 		<div class="container">
 
@@ -22,7 +22,7 @@
 			</aside>
 		</div>
 		<footer>
-			футер сайта
+			<?php echo $footer ?>
 		</footer>
 	</body>
 </html>

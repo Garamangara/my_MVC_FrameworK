@@ -51,10 +51,8 @@ $track = (new Router) -> getTrack($routes, $_SERVER['REQUEST_URI']);
 //Ищет переданный контроллер и проверяет, есть ли в данном контроллере переданное действие
 $page = (new Dispatcher) -> getPage($track);
 
-$menu = (new \Project\Controllers\MenuController) -> getMenu();
-
 //Подключаем отображение представления
-echo (new View) -> ViewRender($page, $menu);
+echo (new View) -> ViewRender($page);
 
 
 ?>
