@@ -17,6 +17,9 @@ class Router
 				$params = $this->clearParams($params);
 				
 				return new Track($route->controller, $route->action, $params);
+				
+			} else {
+				echo "404 Страница не найдена. Роут не совпадает с URI, проверьте правильность написания роута в файле project/config/routes.php"; die();
 			}
 		}
 	}

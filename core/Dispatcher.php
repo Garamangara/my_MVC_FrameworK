@@ -23,7 +23,7 @@ class Dispatcher
 				if($result) {
 					return $result;
 				} else {
-					return new Page('default', null, null, null);
+					return new Page('default', null, null, null, null);
 				}
 
 			} else {

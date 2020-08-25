@@ -2,42 +2,21 @@
 namespace Core;
 
 /**
-* Вспомогательный класс для открытия представления View
-* 
+*	Вспомогательный класс. Хранит в себе данные для отображения страницы
 */
 class Page
 {
-	private $layout;//название макета страницы
-	private $title;//заголовок страницы
+	private string $layout;//название макета страницы (переводится в путь "/project/pages/layouts/{$layout}.php")
+	private string $title;//заголовок страницы
 
-	private $sidebarPath;//путь к сайдбару страницы (сторона расположения определяется в пути)
-	private $sidebarData;//сайдбар страницы (сторона расположения определяется в пути)
+	private array $chanks;// массив с объектами класса Chank
 
-	private $headerPath;//путь к сайдбару страницы (сторона расположения определяется в пути)
-	private $headerData;//сайдбар страницы (сторона расположения определяется в пути)
-
-	private $footerPath;//путь к сайдбару страницы (сторона расположения определяется в пути)
-	private $footerData;//сайдбар страницы (сторона расположения определяется в пути)
-
-	private $view;//путь к представлению
-	private $data;//данные для представления
-
-	function __construct($layout = '', $title = '', $sidebarPath = '', $sidebarData = [], $headerPath = '', $headerData = [], $footerPath = '', $footerData = [], $view = null, $data = [])
+	function __construct($layout = '', $title = '', $chanks)
 	{
 		$this->layout = $layout;
 		$this->title = $title;
 
-		$this->sidebarPath = $sidebarPath;
-		$this->sidebarData = $sidebarData;
-
-		$this->headerPath = $headerPath;
-		$this->headerData = $headerData;
-
-		$this->footerPath = $footerPath;
-		$this->footerData = $footerData;
-
-		$this->view = $view;
-		$this->data = $data;
+		$this->chanks = $chanks;
 	}
 
 	function __get($property) {

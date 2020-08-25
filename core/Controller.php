@@ -3,28 +3,36 @@ namespace Core;
 
 class Controller
 {
-	//Страница сайта по умолчанию
-	private $layaut = 'default';
-	private $title = '';
+	private string $layaut = 'default';//Страница основного макета сайта по умолчанию
+	private string $title = '';//Заголовок страницы
 
-	private $sidebarPath = 'right/default';
-	private $sidebarData = [];
-
-	private $headerPath = 'default';
-	private $headerData = [];
-
-	private $footerPath = 'default';
-	private $footerData = [];
+	private array $chanks = [];//Представления страницы (объекты класса Chank)
 
 	/**
 	* Принимает $view - путь к представлению, $data - данные для создания переменных во View 
 	* Возвращает объект класса Page со всеми настройками для View
 	*/
-	function render($view, $data = []) {
-		return new Page($this->layaut, $this->title, $this->sidebarPath, $this->sidebarData, $this->headerPath, $this->headerData, $this->footerPath, $this->footerData, $view, $data);
+	function render(array $chanks) {
+		return new Page($this->layaut, $this->title, $chanks);
 	}
 
+	/**
+	*	Магическая функция __set для записи данных
+	*	Запускается при попытке изменения приватных свойств
+	*/
 	function __set($property, $value) {
 		$this->$property = $value;
 	}
+
+	/**
+	*	Принимает: $path - путь и $data - данные 
+	*	Возвращает объект класса \Core\Chank;
+	*/
+	function setChank($path = string, $data = []) {
+		if (!is_array($data)) {
+			echo "В данные (второй аргумент функции <b>setChank</b>) должен быть передан массив"; die();
+		}
+		return new Chank($path, $data);
+	}
+
 }

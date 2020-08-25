@@ -3,7 +3,7 @@
 	//id - название категории на английском
 	foreach ($menu as $id => $list) : ?>
 		
-		<a href="films/<?php $list['id'] ?>">
+		<a href="/films/<?php echo $list['english_name'] ?>">
 			<li><?php
 			// mb_internal_encoding("UTF-8");
 			// function mb_ucfirst($text) {
@@ -14,5 +14,7 @@
 			?></li>
 		</a>
 
-	<?php endforeach; ?>
+	<?php endforeach; 
+	// var_dump(apache_request_headers ());
+	?>
 </ul>
